@@ -9,13 +9,24 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
   const chart = useRef()
   const candleSeries = useRef() 
   const intervalRef = useRef()
+  const resizeObserver = useRef()
 
   useEffect(() => {
     chart.current = createChart(chartElementRef.current, config());
+    resizeObserver.current = new ResizeObserver(entries => {
+      const { width, height } = entries[0].contentRect;
+      chart.current.applyOptions({ width, height });
+      setTimeout(() => {
+        chart.current.timeScale().fitContent();
+      }, 0);
+    });
+    resizeObserver.current.observe(chartElementRef.current);
+    
     setChartData()
 
-    return ()=>{
+    return () => {
       cleanup()
+      resizeObserver.current.disconnect();
     }
   }, []);
 

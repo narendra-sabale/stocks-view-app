@@ -22,6 +22,7 @@
 
     .action-bar {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       padding: 16px;
@@ -37,12 +38,13 @@
 
       .status{
         font-weight: bold;
-
+        color: darkblue;
+        
         .current-value{
           font-size: 16px;
         }
         .percentage{
-          margin-left: 8px;
+          margin-left: 4px;
           font-size: 14px;
           .green{
             color: green;
@@ -88,5 +90,34 @@
 }
 
 
-
+@media only screen and (max-width: 415px) {
+  .app{
+    .container{
+      .action-bar{
+        padding: 4px;
+        .status{
+          .current-value{
+            font-weight: normal;
+            font-size: 12px;
+          }
+          .percentage{
+            font-weight: normal;
+            font-size: 10px;
+          }
+        }
+        .selector-container{
+          .range-selector{
+            font-size: 12px;
+          }
+          .chart-selector{
+            width: 100px;
+          }
+        }
+      }
+      .main{
+        padding: 0;
+      }
+    }
+  }
+}
 
