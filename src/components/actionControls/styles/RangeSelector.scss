@@ -1,0 +1,26 @@
+.range-selector {
+  display: flex;
+
+  .range {
+    border: 1px solid gray;
+    border-radius: 2px;
+    padding: 4px;
+    min-width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    font-weight: bold;
+  }
+
+  .range:hover,
+  .active {
+    background-color: gray;
+    color: white; 
+  }
+
+  .range:hover{
+    cursor: pointer;
+  }
+}
