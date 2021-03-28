@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/stocks-view-app/static/css/main.5432f5ee.chunk.css",
+    "main.js": "/stocks-view-app/static/js/main.abcc07d6.chunk.js",
+    "main.js.map": "/stocks-view-app/static/js/main.abcc07d6.chunk.js.map",
+    "runtime-main.js": "/stocks-view-app/static/js/runtime-main.0109c440.js",
+    "runtime-main.js.map": "/stocks-view-app/static/js/runtime-main.0109c440.js.map",
+    "static/js/2.1beb640f.chunk.js": "/stocks-view-app/static/js/2.1beb640f.chunk.js",
+    "static/js/2.1beb640f.chunk.js.map": "/stocks-view-app/static/js/2.1beb640f.chunk.js.map",
+    "index.html": "/stocks-view-app/index.html",
+    "static/css/main.5432f5ee.chunk.css.map": "/stocks-view-app/static/css/main.5432f5ee.chunk.css.map",
+    "static/js/2.1beb640f.chunk.js.LICENSE.txt": "/stocks-view-app/static/js/2.1beb640f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0109c440.js",
+    "static/js/2.1beb640f.chunk.js",
+    "static/css/main.5432f5ee.chunk.css",
+    "static/js/main.abcc07d6.chunk.js"
+  ]
+}
