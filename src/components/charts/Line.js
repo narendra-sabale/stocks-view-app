@@ -44,9 +44,9 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
   }
 
   const getLiveData = () => {
-    let counter = 50
+    // let counter = 50
     intervalRef.current = setInterval(() => {
-      counter--
+      // counter--
       let testdata = fetchLiveData(activeSymbol, activeRange)
       testdata = formatData([testdata])[0]
       
@@ -56,9 +56,9 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
         lineSeries.current.update(testdata)
       } 
       handleCurrentValueUpdate(testdata.value)
-      if (counter <= 0) {
-        cleanup()
-      }
+      // if (counter <= 0) {
+      //   cleanup()
+      // }
     }, LIVE_CHART_UPDATE_TIME)
   }
 

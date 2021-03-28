@@ -44,9 +44,9 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
   }
 
   const getLiveData = () => {
-    let counter = 50
+    // let counter = 50
     intervalRef.current = setInterval(() => {
-      counter--
+      // counter--
       let testdata = fetchLiveData(activeSymbol, activeRange)
       
       console.log("TEST DATA Candle Chart", testdata)
@@ -55,9 +55,9 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
         candleSeries.current.update(testdata)
       } 
       handleCurrentValueUpdate(testdata.close)
-      if (counter <= 0) {
-        cleanup()
-      }
+      // if (counter <= 0) {
+      //   cleanup()
+      // }
     }, LIVE_CHART_UPDATE_TIME)
   }
 
