@@ -59,10 +59,13 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
       // counter--
       let testdata = fetchLiveData(activeSymbol, activeRange)  
       // console.log("TEST DATA Candle Chart", testdata)  
-      if(activeRange === 'Live') { // then only update on chart
-        candleSeries.current.update(testdata)
-      } 
-      handleCurrentValueUpdate(testdata.close)
+      if(testdata !== null) {
+        if(activeRange === 'Live') { // then only update on chart
+          candleSeries.current.update(testdata)
+        } 
+        handleCurrentValueUpdate(testdata.close)
+      }
+      
       // if (counter <= 0) {
       //   cleanup()
       // }

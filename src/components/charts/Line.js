@@ -58,12 +58,14 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
     intervalRef.current = setInterval(() => {
       // counter--
       let testdata = fetchLiveData(activeSymbol, activeRange)
-      testdata = formatData([testdata])[0]
-      // console.log("TEST DATA Line Chart", testdata)
-      if(activeRange === 'Live') { // then only update on chart
-        lineSeries.current.update(testdata)
-      } 
-      handleCurrentValueUpdate(testdata.value)
+      if(testdata !== null) {
+        testdata = formatData([testdata])[0]
+        // console.log("TEST DATA Line Chart", testdata)
+        if(activeRange === 'Live') { // then only update on chart
+          lineSeries.current.update(testdata)
+        } 
+        handleCurrentValueUpdate(testdata.value)
+      }
       // if (counter <= 0) {
       //   cleanup()
       // }

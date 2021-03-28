@@ -41,12 +41,18 @@ export const fetchData = (symbol, range) => { // keepiing same data while range 
 }
 
 export const fetchLiveData = (symbol) => {
-  const currentTimeStamp = moment().unix()
+  let currentTimeStamp = moment().unix()
   let value = symbolMap[symbol]
   value = getRandomNumber(value-5, value+10)
 
   const liveData = generator(0, 1, value)
   liveData.time = currentTimeStamp
+
+  if(data[data.length-1].time === currentTimeStamp){
+    // console.log("MATCH FOUND $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ LIVE UPDATE")
+    return null //return if same timestamp generated
+  }
+
   data.push(liveData) //data push to maintain incremental values while switching to Range(live/1m/1y/all)
   
   return liveData
@@ -81,6 +87,12 @@ export const generateAllData = (symbol, noOfYears=5) => {
     currentTimeStamp = currentTimeStamp - 60
     const obj = generator(j, period, valueDecrement)
     obj.time = currentTimeStamp
+
+    if(hrData[hrData.length-1].time === currentTimeStamp){
+      // console.log("MATCH FOUND $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+      currentTimeStamp = currentTimeStamp - 60
+      obj.time = currentTimeStamp
+    }
 
     hrData.push(obj)
   }

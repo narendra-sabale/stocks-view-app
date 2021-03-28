@@ -20,7 +20,7 @@ const Chart = ({ activeSymbol, activeChart, activeRange, handleCurrentValueUpdat
     }
     
     loadData().then((data) => {
-      // console.log("Returned DATA ::: +++ ", data)
+      // console.log("Returned DATA ::: +++ ", data, JSON.stringify(data))
       setData([...data])
     })  
   }, [activeRange, activeSymbol])
