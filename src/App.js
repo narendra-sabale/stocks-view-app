@@ -1,35 +1,19 @@
-import React, { useCallback, useEffect, useMemo, useState, Fragment } from 'react';
+import React, { useCallback, useState, Fragment } from 'react';
 import RangeSelector from './components/actionControls/RangeSelector'
 import ChartSelector from './components/actionControls/ChartSelector' 
 import WatchList from './components/watchlist/WatchList'
 import Chart from './components/charts/Chart'
 import { DEFAULT_CHART, DEFAULT_RANGE, symbolMap } from './constants'
 import './App.scss';
-///
-import moment from 'moment'
-import {generateYearsData, generateMonthsData, generateDayData} from './util/Util'
-//
-
-
 
 function App() {
   const [activeSymbol, setActiveSymbol] = useState('')
   const [activeChart, setActiveChart] = useState(DEFAULT_CHART)
   const [activeRange, setActiveRange] = useState(DEFAULT_RANGE)
-  const [currentValueOfActiveSymbol, setCurrentValueOfActiveSymbol] = useState(0) //TODO
-  
-
-  // const [toggle, setToggle] = useState(false)
-
-//  useEffect(()=>{
-//   //  setTimeout(()=>{
-//     setActiveSymbol(symbolList[0].symbol)
-//   //  }, 5000)
-   
-//  }, [])
+  const [currentValueOfActiveSymbol, setCurrentValueOfActiveSymbol] = useState(0) 
 
   const handleSelectedSymbol = useCallback((symbol, value) => {
-    setActiveSymbol(symbol) //TODO ++++++++>>>>>>>>>>>>>>>>>>> ::::::::::::clear Interval on change
+    setActiveSymbol(symbol) 
     setCurrentValueOfActiveSymbol(value)
   }, [])
 
@@ -45,15 +29,6 @@ function App() {
     setCurrentValueOfActiveSymbol(value)
   }, [])
 
-  // const handleToggle = () => {
-  //   setToggle(!toggle)
-  // }
-
-  // console.log("Test 123 =====>>", moment().subtract(2, 'years').format('YYYY-MM-DD'))
-  // console.log(generateYearsData()
-  // , generateMonthsData(), generateDayData()
-  // )
-
   const getPercentValue = () => {
     const yesterdayPrice = symbolMap[activeSymbol]
     const percentage = ((currentValueOfActiveSymbol - yesterdayPrice) / yesterdayPrice) * 100
@@ -65,7 +40,8 @@ function App() {
     )
   }
 
-  console.log("Active symbol :::::: " , activeSymbol)
+  // console.log("Active symbol :::::: " , activeSymbol)
+
   return (
     <div className="app">
       <div className="container">
@@ -77,13 +53,13 @@ function App() {
           <div className="project-name">Stocks View App</div>
           
           <div className="status">
-            {
-              !!activeSymbol && 
-                <Fragment>
-                  <span className="current-value">{activeSymbol} : {currentValueOfActiveSymbol}</span>
-                  <span className="percentage">({getPercentValue()})</span>
-                </Fragment>
-            }
+          {
+            !!activeSymbol && 
+              <Fragment>
+                <span className="current-value">{activeSymbol} : {currentValueOfActiveSymbol}</span>
+                <span className="percentage">({getPercentValue()})</span>
+              </Fragment>
+          }
           </div> 
           <div className="selector-container">
             <RangeSelector 
@@ -109,7 +85,6 @@ function App() {
                 handleCurrentValueUpdate={handleCurrentValueUpdate}/>
             : <div className="warning"> Please Add/Select Symbol from Wachlist... </div>  
           }
-          {/* <div onClick={handleToggle} >Toggle</div> */}
         </div>
       </div>
     </div>

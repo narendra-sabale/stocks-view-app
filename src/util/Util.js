@@ -58,7 +58,7 @@ export const generateAllData = (symbol, noOfYears=5) => {
   const size = noOfYears * parseInt(365/period)
   let valueDecrement = symbolMap[symbol]
   data = generateData(size, period, valueDecrement) //generation day by day data
-  console.log("% yesr size = ", data.length)
+  // console.log("% yesr size = ", data.length)
 
   // generating timestamp data
   const hrData = []
@@ -86,7 +86,7 @@ export const generateAllData = (symbol, noOfYears=5) => {
   }
 
   data = data.concat(hrData.reverse())
-  console.log("% yesr size = ", data.length)
+  // console.log("% yesr size = ", data.length)
 } 
 
 //////

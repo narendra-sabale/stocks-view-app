@@ -1,16 +1,10 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import AddSymbol from '../../components/actionControls/AddSymbol'
-import { getRandomNumber, setLocalStorage, getLocalStorage, getRandomNumberInDecimal } from '../../util/Util'
-import { symbolMap } from '../../constants'
+import { getRandomNumber, setLocalStorage, getLocalStorage } from '../../util/Util'
 import './styles/WatchList.scss'
 
 const WatchList = ({ activeSymbol, currentValueOfActiveSymbol, handleSelectedSymbol }) => {
   const [symbolList, setSymbolList] = useState({...getLocalStorage('watchlist')} || {}) 
-
-  // useEffect(()=>{
-  //   // setSymbolList()
-  //   console.log("LOCAL DATA ===> ",{...getLocalStorage('watchlist')})
-  // },[])
 
   useEffect(()=>{
     // console.log("Curreunt Value ", currentValueOfActiveSymbol)
@@ -59,7 +53,7 @@ const WatchList = ({ activeSymbol, currentValueOfActiveSymbol, handleSelectedSym
     handleSelectedSymbol(symbol, symbolList[symbol])
   }
  
-  console.log("rendered Stock List ----->")
+  // console.log("rendered Stock List ----->")
 
   return (
     <div className="stock-list">

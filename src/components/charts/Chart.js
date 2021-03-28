@@ -6,11 +6,11 @@ import { fetchData, formatData, generateAllData } from '../../util/Util'
 import './styles/Chart.scss'
 
 const Chart = ({ activeSymbol, activeChart, activeRange, handleCurrentValueUpdate }) => {
-  console.log("CHART :: ", activeChart)
+  // console.log("CHART :: ", activeChart)
   const [data, setData] = useState([])
 
   useEffect(async () => {
-    console.log("GENERATOR +++++++++++++++++++++++++>>>>>>>>>>>")
+    // console.log("GENERATOR +++++++++++++++++++++++++>>>>>>>>>>>")
     await generateAllData(activeSymbol)
   }, [activeSymbol])
 
@@ -20,14 +20,14 @@ const Chart = ({ activeSymbol, activeChart, activeRange, handleCurrentValueUpdat
     }
     
     loadData().then((data) => {
-      console.log("Returned DATA ::: +++ ", data)
+      // console.log("Returned DATA ::: +++ ", data)
       setData([...data])
     })  
   }, [activeRange, activeSymbol])
 
 
   const renderChart = useCallback(() => {
-    console.log("changed data")
+    // console.log("changed data")
     switch(activeChart) {
       case 'Line': return (
                     <Line 
@@ -56,7 +56,6 @@ const Chart = ({ activeSymbol, activeChart, activeRange, handleCurrentValueUpdat
   return (
     <div className="chart"> 
       {renderChart()} 
-      {/* <Candle data={data}/> */}
     </div>
   )
 }

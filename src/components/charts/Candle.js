@@ -31,8 +31,7 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
   }, []);
 
   useEffect(()=>{
-    console.log("STATE :: >>>>>>>>>>>>> ", chart.current)
-    
+    // console.log("STATE :: >>>>>>>>>>>>> ", chart.current)  
     chart.current.removeSeries(candleSeries.current)
     cleanup()
     setChartData()
@@ -58,10 +57,8 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
     // let counter = 50
     intervalRef.current = setInterval(() => {
       // counter--
-      let testdata = fetchLiveData(activeSymbol, activeRange)
-      
-      console.log("TEST DATA Candle Chart", testdata)
-      
+      let testdata = fetchLiveData(activeSymbol, activeRange)  
+      // console.log("TEST DATA Candle Chart", testdata)  
       if(activeRange === 'Live') { // then only update on chart
         candleSeries.current.update(testdata)
       } 
@@ -76,11 +73,10 @@ const Candle = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) =
     intervalRef.current && clearInterval(intervalRef.current)
   }
 
-  console.log("CANDLE RENDER ------->", data)
+  // console.log("CANDLE RENDER ------->", data)
   
   return (
-    // <div>Candle Chart</div>
-      <div ref={chartElementRef} style={{width: '100%', height:'100%'}} />
+    <div ref={chartElementRef} style={{width: '100%', height:'100%'}} />
   );
 }
 

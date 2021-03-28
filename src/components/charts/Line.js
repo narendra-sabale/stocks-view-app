@@ -31,8 +31,7 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
   }, [])
 
   useEffect(()=>{
-    console.log("STATE :: >>>>>>>>>>>>>>", chart.current)
-    
+    // console.log("STATE :: >>>>>>>>>>>>>>", chart.current)  
     chart.current.removeSeries(lineSeries.current)
     cleanup()
     setChartData()
@@ -60,9 +59,7 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
       // counter--
       let testdata = fetchLiveData(activeSymbol, activeRange)
       testdata = formatData([testdata])[0]
-      
-      console.log("TEST DATA Line Chart", testdata)
-      
+      // console.log("TEST DATA Line Chart", testdata)
       if(activeRange === 'Live') { // then only update on chart
         lineSeries.current.update(testdata)
       } 
@@ -78,7 +75,6 @@ const Line = ({ data, activeSymbol, activeRange, handleCurrentValueUpdate }) => 
   }
 
   return (
-    // <div>Line Chart</div>
     <div ref={chartElementRef} style={{width: '100%', height:'100%'}} />
   );
 }

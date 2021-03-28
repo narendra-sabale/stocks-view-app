@@ -5,12 +5,12 @@ import './styles/ChartSelector.scss'
 const ChartSelector = ({ activeChart, handleChartSelector }) => {
 
   const handleChart = (e) => {
-    console.log("VAL :: ", e.target.value)
+    // console.log("VAL :: ", e.target.value)
     const activeChart = e.target.value
     handleChartSelector(activeChart)
   }
 
-  console.log("rendered Chart ----->")
+  // console.log("rendered Chart ----->")
 
   return(
     <div className="chart-selector">

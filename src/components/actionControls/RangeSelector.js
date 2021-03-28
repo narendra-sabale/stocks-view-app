@@ -5,12 +5,12 @@ import './styles/RangeSelector.scss'
 const RangeSelector = ({ activeRange, handleRangeSelector }) => {
 
   const handleRange = (e) => {
-    console.log(e.target.id)
+    // console.log(e.target.id)
     const activeRange = e.target.id
     handleRangeSelector(activeRange)
   }
 
-  console.log("rendered Range ----->")
+  // console.log("rendered Range ----->")
 
   return (
     <div className="range-selector">

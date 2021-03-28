@@ -28,7 +28,7 @@ const AddSymbol = ({ handleAddSymbol }) => {
     }
   }
 
-  console.log("rendered Input Symbol----->")
+  // console.log("rendered Input Symbol----->")
 
   return (
     <div className="input-wrapper">
