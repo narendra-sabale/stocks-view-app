@@ -6,6 +6,14 @@ import './styles/WatchList.scss'
 const WatchList = ({ activeSymbol, currentValueOfActiveSymbol, handleSelectedSymbol }) => {
   const [symbolList, setSymbolList] = useState({...getLocalStorage('watchlist')} || {}) 
 
+  useEffect(()=>{ // if local storage contains symbols then selecting 1st symbol by default
+    const list = Object.keys(symbolList)
+    if(list.length > 0) {
+      const activeSymbol = getLocalStorage('activeSymbol')
+      handleSelected(activeSymbol.active)
+    }
+  }, [])
+
   useEffect(()=>{
     // console.log("Curreunt Value ", currentValueOfActiveSymbol)
     const updatedList = Object.keys(symbolList).reduce((accumulater, current) => {
@@ -29,6 +37,10 @@ const WatchList = ({ activeSymbol, currentValueOfActiveSymbol, handleSelectedSym
         setLocalStorage('watchlist', list) // add to local storage
         return list
       })
+      const list = Object.keys(symbolList)
+      if(list.length === 0) { // selecting symbol on adding if list empty 
+        handleSelected(symbol) 
+      }
     }
   }, [symbolList])
 
@@ -42,9 +54,15 @@ const WatchList = ({ activeSymbol, currentValueOfActiveSymbol, handleSelectedSym
       return accumulater
     }, {})
 
-    if(activeSymbol === symbol) { // if selected symbol removed then resetting active Symbol and removing chart
-      handleSelectedSymbol('', 0)
+    if(activeSymbol === symbol) { // if selected symbol removed 
+      const list = Object.keys(updatedList)
+      if(list.length > 0) { // selecting 1st symbol 
+        handleSelected(list[0]) 
+      } else {
+        handleSelectedSymbol('', 0) // if list empty then resetting active Symbol and removing chart
+      }
     }
+
     setLocalStorage('watchlist', updatedList) // add to local storage
     setSymbolList({...updatedList})
   }, [symbolList, activeSymbol])

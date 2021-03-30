@@ -4,6 +4,7 @@ import ChartSelector from './components/actionControls/ChartSelector'
 import WatchList from './components/watchlist/WatchList'
 import Chart from './components/charts/Chart'
 import { DEFAULT_CHART, DEFAULT_RANGE, symbolMap } from './constants'
+import { setLocalStorage } from './util/Util'
 import './App.scss';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
   const [activeRange, setActiveRange] = useState(DEFAULT_RANGE)
   const [currentValueOfActiveSymbol, setCurrentValueOfActiveSymbol] = useState(0) 
 
-  const handleSelectedSymbol = useCallback((symbol, value) => {
+  const handleSelectedSymbol = useCallback((symbol, value=0) => {
+    setLocalStorage('activeSymbol', {active: symbol}) // storing selected symbol in localstorage, on refresh it will select by default
     setActiveSymbol(symbol) 
     setCurrentValueOfActiveSymbol(value)
   }, [])
@@ -57,7 +59,10 @@ function App() {
             !!activeSymbol && 
               <Fragment>
                 <span className="current-value">{activeSymbol} : {currentValueOfActiveSymbol}</span>
-                <span className="percentage">({getPercentValue()})</span>
+                { 
+                  (currentValueOfActiveSymbol > 0) &&
+                    <span className="percentage">({getPercentValue()})</span>
+                }
               </Fragment>
           }
           </div> 
@@ -83,7 +88,7 @@ function App() {
                 activeChart={activeChart}
                 activeRange={activeRange}
                 handleCurrentValueUpdate={handleCurrentValueUpdate}/>
-            : <div className="warning"> Please Add/Select Symbol from Wachlist... </div>  
+            : <div className="warning"> Watchlist is Empty. Please Add Symbol to watchlist </div>  
           }
         </div>
       </div>
